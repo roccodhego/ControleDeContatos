@@ -6,9 +6,28 @@
 
 <div class="text-center">
     <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-        <a class="btn btn-primary" role="button" asp-controller="Contato" asp-action="Criar" >Adicionar novo contato</a>
+        <a class="btn btn-primary" role="button" asp-controller="Contato" asp-action="Criar">Adicionar novo contato</a>
     </div>
     <br />
+
+    @if (TempData["MensagemSucesso"] != null)
+    {
+        <div class="alert alert-success" role="alert">
+            <button type="button" class="btn btn-danger btn-sm close-alert" arial-label="Close">X</button>
+            @TempData["MensagemSucesso"]
+        </div>
+    }
+
+    @if (TempData["MensagemErro"] != null)
+    {
+        <div class="alert alert-danger" role="alert">
+            <button type="button" class="btn btn-danger btn-sm close-alert" arial-label="Close">X</button>
+            @TempData["MensagemErro"]
+        </div>
+    }
+
+    <br />
+
     <h1 class="display-4">Listagem de contatos</h1>
 
     <table class="table">
@@ -22,9 +41,9 @@
             </tr>
         </thead>
         <tbody>
-           @if(Model != null && Model.Any())
+            @if (Model != null && Model.Any())
             {
-                foreach(ContatoModel contato in Model)
+                foreach (ContatoModel contato in Model)
                 {
                     <tr>
                         <th scope="row">@contato.Id</th>

@@ -12,21 +12,27 @@
 </div>
 
 <form asp-controller="Contato" asp-action="Criar" method="post">
+
     <div class="form-group">
         <label for="nome">Nome</label>
         <input type="text" asp-for="Nome" class="form-control" placeholder="Digite o nome do contato">
+        @Html.ValidationMessageFor(x => x.Nome)
     </div>
-    
+    <br />
     <div class="form-group">
         <label for="email">Email</label>
         <input type="text" asp-for="Email" class="form-control" placeholder="Digite o email do contato">
-    </div>  
-    
+        @Html.ValidationMessageFor(x => x.Email)    
+    </div>
+    <br />
     <div class="form-group">
         <label for="celular">Celular</label>
         <input type="text" asp-for="Celular" class="form-control" placeholder="Digite o celular do contato">
+        @Html.ValidationMessageFor(x => x.Celular)
     </div>
+
     <br />
+
     <div class="d-grid gap-2">
         <button class="btn btn-primary" type="submit">Adicionar</button>
         <a class="btn btn-secondary d-grid gap-2" asp-controller="Contato" asp-action="Index" role="button">Voltar</a>
